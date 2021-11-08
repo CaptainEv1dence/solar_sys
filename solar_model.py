@@ -1,9 +1,13 @@
 # coding: utf-8
 # license: GPLv3
 
+<<<<<<< HEAD
+G = gravitational_constant = 6.67408E-11
+=======
 from math import atan, cos, sin
 
 gravitational_constant = 6.67408E-11
+>>>>>>> 61f5a91a029514112b0b6003a5375a5f3d9b6349
 """Гравитационная постоянная Ньютона G"""
 
 
@@ -29,7 +33,6 @@ def calculate_force(body, space_objects):
             an = atan((obj.y - body.y) / (obj.x - body.x))
         body.Fx += cos(an)*gravitational_constant * obj.m / r**2
         body.Fy += sin(an)*gravitational_constant * obj.m / r**2
-
 
 def move_space_object(body, dt):
     """Перемещает тело в соответствии с действующей на него силой.
