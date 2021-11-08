@@ -1,4 +1,4 @@
-# coding: utf-8 121212
+# coding: utf-8 
 # license: GPLv3
 
 from solar_objects import Star, Planet
