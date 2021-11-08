@@ -1,7 +1,7 @@
 # coding: utf-8 
 # license: GPLv3
 
-from solar_objects import Star, Planet
+from solar_objects import Star, Planet, CelestialBody
 from solar_vis import DrawableObject
 
 def read_space_objects_data_from_file(input_filename):
@@ -21,12 +21,10 @@ def read_space_objects_data_from_file(input_filename):
 
             object_type = line.split()[0].lower()
             if object_type == "star":
-                star = Star()
-                parse_object_parameters(line)
+                star = CelestialBody(**parse_object_parameters(line))
                 objects.append(star)
             elif object_type == "planet":
-                planet = Planet()
-                parse_object_parameters(line)
+                planet = CelestialBody(**parse_object_parameters(line))
                 objects.append(planet)
             else:
                 print("Unknown space object")
