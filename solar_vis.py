@@ -70,6 +70,8 @@ class Drawer:
         self.screen = screen
 
     def update(self, figures, screen):
+        '''обновляет экран: заполняет его белым цветом, 
+        рисует все объекты из заданного массива'''
         self.screen.fill((0, 0, 0))
         for figure in figures:
             figure.draw(self.screen)
