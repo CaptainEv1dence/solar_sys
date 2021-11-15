@@ -4,7 +4,6 @@
 class CelestialBody:
 
     def __init__(self, type, R, color, m, x, y, Vx, Vy):
-
         self.type = type
         self.R = R
         self.color = color

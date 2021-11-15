@@ -1,13 +1,11 @@
 # coding: utf-8
 # license: GPLv3
 
-<<<<<<< HEAD
 G = gravitational_constant = 6.67408E-11
-=======
+
 from math import atan, cos, sin
 
 gravitational_constant = 6.67408E-11
->>>>>>> 61f5a91a029514112b0b6003a5375a5f3d9b6349
 """Гравитационная постоянная Ньютона G"""
 
 
