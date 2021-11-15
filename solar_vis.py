@@ -70,13 +70,14 @@ class Drawer:
         self.screen = screen
 
 
-    def update(self, figures, ui):
+    def update(self, figures, screen):
+        
         self.screen.fill((0, 0, 0))
         for figure in figures:
             figure.draw(self.screen)
         
-        ui.blit()
-        ui.update()
+        screen.blit()
+        screen.update()
         pg.display.update()
 
 
@@ -85,6 +86,8 @@ class DrawableObject:
         self.obj = obj
 
     def draw(self, surface):
+        '''рисует круглый объект на заданной поверхности, 
+        используя параметры объекта: радиус, цвет, местоположение'''
         pg.draw.circle(surface, self.obj.color, (scale_x(self.obj.x), scale_y(self.obj.y)), self.obj.R)
 
 
