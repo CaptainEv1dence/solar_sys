@@ -86,10 +86,13 @@ def handle_events(events, menu):
             alive = False
 
 def slider_to_real(val):
-    
+    '''вспомогательная функция счетчика времени
+    на вход получает число'''
     return np.exp(5 + val)
 
 def slider_reaction(event):
+    '''функция счетчика времени
+    на вход получает событие'''
     global time_scale
     time_scale = slider_to_real(event.el.get_value())
 
