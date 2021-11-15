@@ -1,7 +1,7 @@
 # coding: utf-8
 # license: GPLv3
 
-from math import atan, cos, sin
+from math import atan, cos, sin, acos
 
 gravitational_constant = 6.67408E-11
 
@@ -23,13 +23,10 @@ def calculate_force(body, space_objects):
         if body == obj:
             continue  # тело не действует гравитационной силой на само себя!
         r = ((body.x - obj.x)**2 + (body.y - obj.y)**2)**0.5
-        #r = max(r, body.R) # FIXME: обработка аномалий при прохождении одного тела сквозь другое
-        if body.x == obj.x:
-            an = 90
-        else:
-            an = atan((obj.y - body.y) / (obj.x - body.x))
-        body.Fx += cos(an)*gravitational_constant * obj.m / r**2
-        body.Fy += sin(an)*gravitational_constant * obj.m / r**2
+        r = max(r, body.R + obj.R) # и так сойдет
+        an = (1 - 2 * (body.y >= obj.y)) * acos((obj.x - body.x) / r)
+        body.Fx += cos(an) * gravitational_constant * obj.m * body.m / r**2
+        body.Fy += sin(an) * gravitational_constant * obj.m * body.m / r**2
 
 def move_space_object(body, dt):
     """Перемещает тело в соответствии с действующей на него силой.
@@ -38,12 +35,12 @@ def move_space_object(body, dt):
 
     **body** — тело, которое нужно переместить.
     """
-    ax = body.Fx/body.m
+    ax = body.Fx / body.m
     body.x += body.Vx * dt + ax * dt * dt /2
     body.Vx += ax * dt
-    ay = body.Fy/body.m
+    ay = body.Fy / body.m
     body.y += body.Vy * dt + ay * dt * dt /2
-    body.Vy += ay*dt
+    body.Vy += ay * dt
 
 
 def recalculate_space_objects_positions(space_objects, dt):
