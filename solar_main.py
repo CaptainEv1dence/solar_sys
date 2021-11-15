@@ -74,7 +74,7 @@ def open_file():
     model_time = 0.0
     in_filename = "solar_system.txt"
     space_objects = read_space_objects_data_from_file(in_filename)
-    max_distance = max([max(abs(float(obj.obj.x)), abs(float(obj.obj.y))) for obj in space_objects])
+    max_distance = max([max(abs(obj.obj.x), abs(obj.obj.y)) for obj in space_objects])
     calculate_scale_factor(max_distance)
 
 def handle_events(events, menu):
@@ -126,7 +126,7 @@ def init_ui(screen):
     for element in menu.get_population():
         element.surface = screen
 
-    box.set_topleft((0,0))
+    box.set_topleft((0, 0))
     box.blit()
     box.update()
     return menu, box, timer
@@ -150,7 +150,7 @@ def main():
     pg.init()
     
     width = 1000
-    height = 900
+    height = 800
     screen = pg.display.set_mode((width, height))
     last_time = time.perf_counter()
     drawer = Drawer(screen)
