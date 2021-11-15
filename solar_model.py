@@ -1,9 +1,6 @@
 # coding: utf-8
 # license: GPLv3
 
-
-G = gravitational_constant = 6.67408E-11
-
 from math import atan, cos, sin
 
 gravitational_constant = 6.67408E-11

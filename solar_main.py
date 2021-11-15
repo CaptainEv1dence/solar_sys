@@ -48,12 +48,16 @@ def start_execution():
     perform_execution = True
 
 def pause_execution():
+    """Обработчик события нажатия на кнопку Pause.
+    Останавливает циклическое исполнение функции execution.
+    """
+    
     global perform_execution
     perform_execution = False
 
 def stop_execution():
-    """Обработчик события нажатия на кнопку Start.
-    Останавливает циклическое исполнение функции execution.
+    """Обработчик события нажатия на кнопку !Start!.
+    Останавливает главную функцию главного модуля.
     """
     global alive
     alive = False
@@ -74,6 +78,7 @@ def open_file():
     calculate_scale_factor(max_distance)
 
 def handle_events(events, menu):
+    '''функция обработки событий'''
     global alive
     for event in events:
         menu.react(event)
@@ -81,13 +86,18 @@ def handle_events(events, menu):
             alive = False
 
 def slider_to_real(val):
+    '''вспомогательная функция счетчика времени
+    на вход получает число'''
     return np.exp(5 + val)
 
 def slider_reaction(event):
+    '''функция счетчика времени
+    на вход получает событие'''
     global time_scale
     time_scale = slider_to_real(event.el.get_value())
 
 def init_ui(screen):
+    '''Создаёт объекты графического дизайна библиотеки: окно, холст, фрейм с кнопками, кнопки, таймер'''
     global browser
     slider = thorpy.SliderX(100, (-10, 10), "Simulation speed")
     slider.user_func = slider_reaction
@@ -123,7 +133,6 @@ def init_ui(screen):
 
 def main():
     """Главная функция главного модуля.
-    Создаёт объекты графического дизайна библиотеки tkinter: окно, холст, фрейм с кнопками, кнопки.
     """
     
     global physical_time
