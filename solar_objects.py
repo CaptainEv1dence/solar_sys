@@ -5,20 +5,20 @@ class CelestialBody:
 
     def __init__(self, type, R, color, m, x, y, Vx, Vy):
         self.type = type
-        self.R = R
+        self.R = int(R)
         self.color = color
-        self.m = m
-        self.x = x
-        self.y = y
-        self.Fx = 0
-        self.Fy = 0
-        self.Vx = Vx
-        self.Vy = Vy
+        self.m = float(m)
+        self.x = float(x)
+        self.y = float(y)
+        self.Fx = 0.0
+        self.Fy = 0.0
+        self.Vx = float(Vx)
+        self.Vy = float(Vy)
 
 
 class Star(CelestialBody):
     def __init__(self, parsed_line):
-        self.type = 'star'
+        self.type = 'Star'
         self.m = parsed_line[3]
         self.x = parsed_line[4]
         self.y = parsed_line[5]
@@ -31,7 +31,7 @@ class Star(CelestialBody):
         
 class Planet(CelestialBody):
     def __init__(self, parsed_line):
-        self.type = 'planet'
+        self.type = 'Planet'
         self.m = parsed_line[3]
         self.x = parsed_line[4]
         self.y = parsed_line[5]
