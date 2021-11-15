@@ -86,10 +86,11 @@ def write_space_objects_data_to_file(output_filename, space_objects):
 
     **space_objects** — список объектов планет и звёзд
     """
-    with open(output_filename, 'w') as out_file:
+    with open(output_filename, 'a') as out_file:
         for obj in space_objects:
-            out_file.write(obj.type, obj.R, obj.m, obj.x, obj.y, obj.Vx, obj.Vy)
-            out_file.write('\n')
+            if (obj.obj.type == "Planet"):
+                out_file.write(str(obj.obj.x) + ' ' + str(obj.obj.y) + ' ' + str(obj.obj.Vx) + ' ' + str(obj.obj.Vy))
+                out_file.write('\n')
 
 
 if __name__ == "__main__":
