@@ -19,11 +19,11 @@ def read_space_objects_data_from_file(input_filename):
             if len(line.strip()) == 0 or line[0] == '#':
                 continue  # пустые строки и строки-комментарии пропускаем
 
-            object_type = line.split()[0].lower()
-            if object_type == "star":
+            object_type = line.split()[0]
+            if object_type == "Star":
                 star = CelestialBody(**parse_object_parameters(line))
                 objects.append(star)
-            elif object_type == "planet":
+            elif object_type == "Planet":
                 planet = CelestialBody(**parse_object_parameters(line))
                 objects.append(planet)
             else:
