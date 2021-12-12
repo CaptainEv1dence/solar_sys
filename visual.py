@@ -89,15 +89,14 @@ class Drawer:
         screen.update()
         pg.display.update()
 
-
-class DrawableObject(pg.sprite.Sprite):
-    def __init__(self, obj):
-        self.obj = obj
-        #pg.sprite.Sprite.__init__(self)
-        #self.image = starship_img = pg.image.load(os.path.join(r'C:\Users\petrk\among_stars\img', 'rock.png')).convert()
+#self.image = starship_img = pg.image.load(os.path.join(r'C:\Users\petrk\among_stars\img', 'rock.png')).convert()
         #self.image.set_colorkey((0, 0, 0))
         #self.rect = self.image.get_rect()
         #self.rect.center = (300, 300)
+class DrawableObject(pg.sprite.Sprite):
+    def __init__(self, obj):
+        self.obj = obj
+
 
     def draw(self, surface):
         '''рисует круглый объект на заданной поверхности, 
