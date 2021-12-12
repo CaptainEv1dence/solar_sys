@@ -169,7 +169,7 @@ def main():
     while alive:
         handle_events(pg.event.get(), menu)
         cur_time = time.perf_counter()
-        write_space_objects_data_to_file("stats.txt", space_objects)
+
         if perform_execution:
             execution((cur_time - last_time) * time_scale)
             text = "%d seconds passed" % (int(model_time))
